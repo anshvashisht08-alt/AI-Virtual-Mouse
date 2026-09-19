@@ -7,12 +7,10 @@ from ctypes import cast, POINTER
 from comtypes import CLSCTX_ALL
 #from pycaw.pycaw import AudioUtilities, IAudioEndpointVolume
 
-# -----------------------------
+
 # INSTALL THESE LIBRARIES FIRST
 # pip install opencv-python mediapipe pyautogui
 # pip install screen-brightness-control pycaw comtypes
-# -----------------------------
-
 # Webcam
 cap = cv2.VideoCapture(0)
 print(cap.isOpened())
@@ -82,9 +80,8 @@ while True:
             ring_x, ring_y = landmark_list[16]
             pinky_x, pinky_y = landmark_list[20]
 
-            # =========================
             # CURSOR MOVEMENT
-            # =========================
+
             screen_x = screen_w / w * index_x
             screen_y = screen_h / h * index_y
 
@@ -102,9 +99,8 @@ while True:
                 -1
             )
 
-            # =========================
             # LEFT CLICK
-            # =========================
+            
             click_distance = math.hypot(
                 thumb_x - index_x,
                 thumb_y - index_y
@@ -126,10 +122,9 @@ while True:
                     3
                 )
 
-            # =========================
+            
             # RIGHT CLICK
             # Thumb + Middle Finger
-            # =========================
             right_click_distance = math.hypot(
                 thumb_x - middle_x,
                 thumb_y - middle_y
@@ -151,10 +146,10 @@ while True:
                     3
                 )
 
-            # =========================
+            
             # DOUBLE CLICK
             # Thumb + Ring Finger
-            # =========================
+            
             double_click_distance = math.hypot(
                 thumb_x - ring_x,
                 thumb_y - ring_y
@@ -176,10 +171,10 @@ while True:
                     3
                 )
 
-            # =========================
+            
             # DRAG & DROP
             # Thumb + Pinky
-            # =========================
+            
             drag_distance = math.hypot(
                 thumb_x - pinky_x,
                 thumb_y - pinky_y
@@ -206,10 +201,10 @@ while True:
                     pyautogui.mouseUp()
                     drag_mode = False
 
-            # =========================
+            
             # VOLUME CONTROL
             # Distance Thumb + Index
-            # =========================
+            
             volume_distance = math.hypot(
                 thumb_x - index_x,
                 thumb_y - index_y
@@ -225,10 +220,9 @@ while True:
                 #None
             #)
 
-            # =========================
+            
             # BRIGHTNESS CONTROL
             # Distance Thumb + Middle
-            # =========================
             brightness_distance = math.hypot(
                 thumb_x - middle_x,
                 thumb_y - middle_y
@@ -244,10 +238,10 @@ while True:
             except:
                 pass
 
-            # =========================
+           
             # SCREENSHOT
             # All fingers close
-            # =========================
+           
             all_close = (
                 click_distance < 40 and
                 right_click_distance < 40 and
@@ -276,9 +270,9 @@ while True:
             if click_delay > 0:
                 click_delay -= 1
 
-    # =========================
+    
     # TITLE
-    # =========================
+   
     cv2.putText(
         frame,
         "AI VIRTUAL MOUSE PRO",
